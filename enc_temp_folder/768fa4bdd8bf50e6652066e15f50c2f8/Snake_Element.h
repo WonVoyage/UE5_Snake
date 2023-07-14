@@ -2,23 +2,21 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Snake_Element.h"
-#include "SnakeBase.generated.h"
+#include "Engine/Classes/Components/StaticMeshComponent.h"
+#include "Snake_Element.generated.h"
 
 //-------------------------------------------------------------------------------------------------------------
 UCLASS()
-class SNAKE_API ASnakeBase : public AActor
+class SNAKE_API ASnake_Element : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
-	ASnakeBase();
+	ASnake_Element();
 
 	virtual void Tick(float DeltaTime);
 
-	UPROPERTY(BlueprintReadWrite) ASnake_Element *Snake_Element;
-	UPROPERTY(EditDefaultsOnly) TSubclassOf<ASnake_Element> Snake_Element_Class;
-
+	UStaticMeshComponent *Snake_Element_Mesh;
 
 protected:
 	virtual void BeginPlay();
