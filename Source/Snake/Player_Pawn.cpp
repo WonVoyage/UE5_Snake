@@ -1,5 +1,4 @@
 #include "Player_Pawn.h"
-#include "Engine/Classes/Camera/CameraComponent.h"
 
 //-------------------------------------------------------------------------------------------------------------
 APlayer_Pawn::APlayer_Pawn()
@@ -11,6 +10,28 @@ APlayer_Pawn::APlayer_Pawn()
 	RootComponent = Player_Camera;
 }
 //-------------------------------------------------------------------------------------------------------------
+void APlayer_Pawn::HandlePlayerVerticalInput(float value)
+{
+	if (IsValid(Snake))
+	{
+		if (value > 0 && Snake->Movement_Direction != EMovement_Direction::Down)
+			Snake->Movement_Direction = EMovement_Direction::Up;
+		else if (value < 0 && Snake->Movement_Direction != EMovement_Direction::Up)
+			Snake->Movement_Direction = EMovement_Direction::Down;
+	}
+}
+//-------------------------------------------------------------------------------------------------------------
+void APlayer_Pawn::HandlePlayerHorizontalInput(float value)
+{
+	if (IsValid(Snake))
+	{
+		if (value > 0 && Snake->Movement_Direction != EMovement_Direction::Left)
+			Snake->Movement_Direction = EMovement_Direction::Right;
+		else if (value < 0 && Snake->Movement_Direction != EMovement_Direction::Right)
+			Snake->Movement_Direction = EMovement_Direction::Left;
+	}
+}
+//-------------------------------------------------------------------------------------------------------------
 void APlayer_Pawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
@@ -19,6 +40,10 @@ void APlayer_Pawn::Tick(float DeltaTime)
 void APlayer_Pawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
+
+	PlayerInputComponent->BindAxis("Horizontal", this, &APlayer_Pawn::HandlePlayerHorizontalInput);
+	PlayerInputComponent->BindAxis("Vertical", this, &APlayer_Pawn::HandlePlayerVerticalInput);
+
 }
 //-------------------------------------------------------------------------------------------------------------
 void APlayer_Pawn::Create_Snake()
