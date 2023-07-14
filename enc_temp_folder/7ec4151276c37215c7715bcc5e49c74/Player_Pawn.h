@@ -3,8 +3,6 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "SnakeBase.h"
-#include "Components/InputComponent.h"
-#include "Engine/Classes/Camera/CameraComponent.h"
 #include "Player_Pawn.generated.h"
 
 class UCameraComponent;
@@ -17,9 +15,6 @@ class SNAKE_API APlayer_Pawn : public APawn
 
 public:
 	APlayer_Pawn();
-
-	UFUNCTION() void HandlePlayerVerticalInput(float value);
-	UFUNCTION() void HandlePlayerHorizontalInput(float value);
 
 	virtual void Tick(float DeltaTime);
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent);
