@@ -23,8 +23,7 @@ public:
 
 	UPROPERTY(BlueprintReadWrite) UCameraComponent *Player_Camera;
 	UPROPERTY(BlueprintReadWrite) ASnakeBase *Snake;
-	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<ASnakeBase> Snake_Actor_Class;
+	UPROPERTY(EditDefaultsOnly) TSubclassOf<ASnakeBase> Snake_Actor_Class;
 
 protected:
 	virtual void BeginPlay();
