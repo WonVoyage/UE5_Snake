@@ -1,18 +1,18 @@
-#include "SnakeBase.h"
+#include "Snake_Element.h"
 
 //-------------------------------------------------------------------------------------------------------------
-ASnakeBase::ASnakeBase()
+ASnake_Element::ASnake_Element()
 {
 	PrimaryActorTick.bCanEverTick = true;
+	Snake_Element_Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Snake_Element_Mesh"));
 }
 //-------------------------------------------------------------------------------------------------------------
-void ASnakeBase::BeginPlay()
+void ASnake_Element::BeginPlay()
 {
-	Super::BeginPlay();
-	GetWorld()->SpawnActor<ASnake_Element>(Snake_Element_Class, GetActorTransform());
+	Super::BeginPlay();	
 }
 //-------------------------------------------------------------------------------------------------------------
-void ASnakeBase::Tick(float DeltaTime)
+void ASnake_Element::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }

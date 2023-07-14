@@ -17,7 +17,7 @@ public:
 	virtual void Tick(float DeltaTime);
 
 	UPROPERTY(BlueprintReadWrite) ASnake_Element *Snake_Element;
-	UPROPERTY(EditDefaultsOnly) TSubclassOf<ASnake_Element> Snake_Element_Class;
+	TSubclassOf<ASnake_Element> Snake_Element_Class;
 
 
 protected:
